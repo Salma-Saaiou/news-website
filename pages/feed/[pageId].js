@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { Toolbar } from "../../components/toolbar";
 import Head from "next/head";
+import Image from "next/image";
 
 
 export const Feed = ({ PageNumber, articles }) => {
@@ -9,8 +10,8 @@ export const Feed = ({ PageNumber, articles }) => {
     <div>
       <Head>
         <title>Feed - newsApp</title>
-        <meta name="description" content={`Feed ${pageId}`} />
-        <meta property="og:title" content={`Feed ${pageId}`} />
+        <meta name="description" content="feed" />
+        <meta property="og:title" content="feed" />
       </Head>
       <Toolbar />
       <main className="grid place-items-center h-[600px] w-full space-y-12 pt-[100px]">
@@ -26,9 +27,9 @@ export const Feed = ({ PageNumber, articles }) => {
             </div>
             <div className="">{article.description}</div>
             <div>
-              {!!article.urlToImage && (
-                <img src={article.urlToImage} className="w-full" />
-              )}
+              {/* {!!article.urlToImage && (
+                <Image src={article.urlToImage} className="w-full" />
+              )} */}
             </div>
             <div className="w-full h-px bg-[#000] space-y-12"></div>
           </div>

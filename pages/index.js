@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Today's news</title>
+        <title>Todays news</title>
         <meta name="description" content="Today's news" />
         <meta property="og:title" content="Today's news" />
 
