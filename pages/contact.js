@@ -33,8 +33,8 @@ export const Contact = () => {
     <div>
       <Head>
         <title>Contact - newsApp</title>
-        <meta name="description" content="Contact - NewsApp" />
-        <meta property="og:title" content="Contact - NewsApp" />
+        <meta name="description" content="Contact - NewsApp" key="Contact" />
+        <meta property="og:title" content="Contact - NewsApp" key="Contact" />
       </Head>
       <Toolbar />
 
