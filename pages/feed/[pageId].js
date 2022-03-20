@@ -9,11 +9,11 @@ export const Feed = ({ PageNumber, articles }) => {
     <div>
       <Head>
         <title>Feed - newsApp</title>
-        <meta name="description" content="Today's news" />
-        <meta property="og:title" content="Today's news" />
+        <meta name="description" content={`Feed ${pageId}`} />
+        <meta property="og:title" content={`Feed ${pageId}`} />
       </Head>
       <Toolbar />
-      <div className="grid place-items-center h-[600px] w-full space-y-12 pt-[100px]">
+      <main className="grid place-items-center h-[600px] w-full space-y-12 pt-[100px]">
         {articles.map((article, index) => (
           <div key={index} className="space-y-4 md:w-[700px] w-[300px] ">
             <div
@@ -62,7 +62,7 @@ export const Feed = ({ PageNumber, articles }) => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

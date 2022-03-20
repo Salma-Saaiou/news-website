@@ -3,35 +3,41 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 export const Contact = () => {
-  const { register, handleSubmit,  formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   async function onSubmitForm(values) {
     console.log(values);
     let config = {
-        method: 'post',
-        url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        data: values
+      method: "post",
+      url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: values,
     };
 
     try {
-        const response = await axios(config);
-        console.log(response)
-        
+      const response = await axios(config);
+      console.log(response);
     } catch (err) {
-        console.log(err)
-        
+      console.log(err);
     }
-    
   }
 
   return (
     <div>
+      <Head>
+        <title>Contact - newsApp</title>
+        <meta name="description" content="Contact - NewsApp" />
+        <meta property="og:title" content="Contact - NewsApp" />
+      </Head>
       <Toolbar />
 
-      <div className="b py-16 bg-gray-50 px-4 sm:px-6 h-screen w-screen flex justify-center items-center">
+      <main className="b py-16 bg-gray-50 px-4 sm:px-6 h-screen w-screen flex justify-center items-center">
         <div className="mx-auto w-full max-w-2xl rounded-xl bg-white p-8 shadow">
           <form
             className="grid grid-cols-1 gap-y-6"
@@ -47,12 +53,15 @@ export const Contact = () => {
                 className={`block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 `}
                 placeholder="Full name"
                 {...register("name", {
-                    pattern: /^[A-Za-z]+$/i,
-                    required: true                   
-                    
-                  })}
+                  pattern: /^[A-Za-z]+$/i,
+                  required: true,
+                })}
               />
-              {errors.name && <span className="text-red-400 text-sm py-2">this field is required</span>}
+              {errors.name && (
+                <span className="text-red-400 text-sm py-2">
+                  this field is required
+                </span>
+              )}
             </div>
             <div>
               <label htmlFor="email" className="sr-only">
@@ -64,12 +73,16 @@ export const Contact = () => {
                 className={`block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2`}
                 placeholder="Email"
                 {...register("email", {
-                    pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    required: true                   
-                    
-                  })}
+                  pattern:
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  required: true,
+                })}
               />
-              {errors.email && <span className="text-red-400 text-sm py-2">this field is required</span>}
+              {errors.email && (
+                <span className="text-red-400 text-sm py-2">
+                  this field is required
+                </span>
+              )}
             </div>
             <div>
               <label htmlFor="phone" className="sr-only">
@@ -81,11 +94,15 @@ export const Contact = () => {
                 className="block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2"
                 placeholder="Phone"
                 {...register("phone", {
-                    required: "Required",
-                    pattern: /(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}/,
-                  })}
+                  required: "Required",
+                  pattern: /(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}/,
+                })}
               />
-              {errors.phone && <span className="text-red-400 text-sm py-2">this field is required</span>}
+              {errors.phone && (
+                <span className="text-red-400 text-sm py-2">
+                  this field is required
+                </span>
+              )}
             </div>
             <div>
               <label htmlFor="message" className="sr-only">
@@ -97,10 +114,14 @@ export const Contact = () => {
                 className={`block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2`}
                 placeholder="Message"
                 {...register("message", {
-                    required: "Required",
-                  })}
+                  required: "Required",
+                })}
               ></textarea>
-              {errors.message && <span className="text-red-400 text-sm py-2">this field is required</span>}
+              {errors.message && (
+                <span className="text-red-400 text-sm py-2">
+                  this field is required
+                </span>
+              )}
             </div>
             <div>
               <button
@@ -112,7 +133,7 @@ export const Contact = () => {
             </div>
           </form>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

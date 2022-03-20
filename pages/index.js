@@ -9,9 +9,10 @@ export default function Home() {
         <title>Today's news</title>
         <meta name="description" content="Today's news" />
         <meta property="og:title" content="Today's news" />
+
       </Head>
       <Toolbar />
-      <div className="grid place-items-center h-[600px] w-full">
+      <main className="grid place-items-center h-[600px] w-full">
         <div className="">
           <h1 className="text-[30px] md:text-[50px] font-bold text-center">
             News App
@@ -20,7 +21,7 @@ export default function Home() {
             You will find the latest news in this website
           </h3>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
