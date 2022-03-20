@@ -1,6 +1,7 @@
 import { Toolbar } from ".././components/toolbar";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Head from "next/head";
 
 export const Contact = () => {
   const {
