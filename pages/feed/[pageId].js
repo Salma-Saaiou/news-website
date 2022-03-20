@@ -1,11 +1,17 @@
 import { useRouter } from "next/router";
 import { Toolbar } from "../../components/toolbar";
+import Head from "next/head";
 
 
 export const Feed = ({ PageNumber, articles }) => {
   const router = useRouter();
   return (
     <div>
+      <Head>
+        <title>Feed - newsApp</title>
+        <meta name="description" content="Today's news" />
+        <meta property="og:title" content="Today's news" />
+      </Head>
       <Toolbar />
       <div className="grid place-items-center h-[600px] w-full space-y-12 pt-[100px]">
         {articles.map((article, index) => (

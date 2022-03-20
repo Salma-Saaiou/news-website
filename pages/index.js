@@ -1,11 +1,15 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Toolbar } from "../components/toolbar";
-import styles from "../styles/Home.module.css";
+
 
 export default function Home() {
   return (
     <div>
+      <Head>
+        <title>Today's news</title>
+        <meta name="description" content="Today's news" />
+        <meta property="og:title" content="Today's news" />
+      </Head>
       <Toolbar />
       <div className="grid place-items-center h-[600px] w-full">
         <div className="">
