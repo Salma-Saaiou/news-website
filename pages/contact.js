@@ -1,4 +1,3 @@
-import { Toolbar } from ".././components/toolbar";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Head from "next/head";
@@ -23,7 +22,11 @@ export const Contact = () => {
 
     try {
       const response = await axios(config);
-      console.log(response);
+      if (response.data.status == 200) {
+          reset();
+          console.log(response);
+      }
+      
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +39,7 @@ export const Contact = () => {
         <meta name="description" content="Contact - NewsApp" key="Contact" />
         <meta property="og:title" content="Contact - NewsApp" key="Contact" />
       </Head>
-      <Toolbar />
+      {/* <Toolbar /> */}
 
       <main className="b py-16 bg-gray-50 px-4 sm:px-6 h-screen w-screen flex justify-center items-center">
         <div className="mx-auto w-full max-w-2xl rounded-xl bg-white p-8 shadow">
@@ -54,7 +57,7 @@ export const Contact = () => {
                 className={`block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2 `}
                 placeholder="Full name"
                 {...register("name", {
-                  pattern: /^[A-Za-z]+$/i,
+                  pattern: /^[a-z ,.'-]+$/i,
                   required: true,
                 })}
               />
@@ -80,7 +83,7 @@ export const Contact = () => {
                 })}
               />
               {errors.email && (
-                <span className="text-red-400 text-sm py-2">
+                <span className="text-[#FF0000] text-sm py-2">
                   this field is required
                 </span>
               )}
@@ -124,6 +127,34 @@ export const Contact = () => {
                 </span>
               )}
             </div>
+            {/* <div className="space-y-[8px]">
+              <label
+                htmlFor="messageSelected"
+                className="text-[#0D0D0D] font-Mulish text-[16px] font-bold ml-2"
+              >
+                Objet de votre message ?
+              </label>
+              <select
+                className="w-full py-3 px-4 focus:outline-0 border border-[#E3E3E3]"
+                defaultValue={"DEFAULT"}
+                name="optionSelected"
+                {...register("optionSelected", {
+                  required: "Required",
+                })}
+              >
+                <option value="DEFAULT" disabled>
+                  Sélectionnez
+                </option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="other">other</option>
+              </select>
+            </div> */}
+            {/* {errors.optionSelected && (
+              <span className="text-red-400 text-sm py-2">
+                this field is required
+              </span>
+            )} */}
             <div>
               <button
                 type="submit"
