@@ -7,6 +7,7 @@ export default async (req, res) => {
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
+    url:"https://formspree.io/f/xvolbvrl",
     port: 465,
     secure: true,
     // tls: {
