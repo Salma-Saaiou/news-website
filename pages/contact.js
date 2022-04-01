@@ -1,3 +1,5 @@
+
+
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Head from "next/head";
@@ -13,11 +15,11 @@ export const Contact = () => {
     console.log(values);
     let config = {
       method: "post",
+      url:"https://formspree.io/f/xvolbvrl",
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
-    
 
       data: values,
     };
@@ -25,10 +27,10 @@ export const Contact = () => {
     try {
       const response = await axios(config);
       if (response.data.status == 200) {
-          
+
           console.log(response);
       }
-      
+
     } catch (err) {
       console.log(err);
     }
@@ -129,7 +131,7 @@ export const Contact = () => {
                 </span>
               )}
             </div>
-            {/* <div className="space-y-[8px]">
+            <div className="space-y-[8px]">
               <label
                 htmlFor="messageSelected"
                 className="text-[#0D0D0D] font-Mulish text-[16px] font-bold ml-2"
@@ -151,12 +153,12 @@ export const Contact = () => {
                 <option value="option2">option2</option>
                 <option value="other">other</option>
               </select>
-            </div> */}
-            {/* {errors.optionSelected && (
+            </div>
+            {errors.optionSelected && (
               <span className="text-red-400 text-sm py-2">
                 this field is required
               </span>
-            )} */}
+            )}
             <div>
               <button
                 type="submit"
