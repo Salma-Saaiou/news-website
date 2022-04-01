@@ -11,19 +11,19 @@ export const Contact = () => {
 
   async function onSubmitForm(values) {
     console.log(values);
-    // let config = {
-    //   method: "post",
-    //   headers: {
-    //     Accept: "application/json, text/plain, */*",
-    //     "Content-Type": "application/json",
-    //   },
+    let config = {
+      method: "post",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
     
 
-    //   data: values,
-    // };
+      data: values,
+    };
 
     try {
-      const response = await axios.post("/api/mail", { email });
+      const response = await axios(config);
       if (response.data.status == 200) {
           
           console.log(response);
