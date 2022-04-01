@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export const contactNextjs = () => {
+export default () => {
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
@@ -95,6 +95,3 @@ export const contactNextjs = () => {
     </main>
   );
 };
-
-
-export default contactNextjs;
