@@ -13,10 +13,12 @@ export const Contact = () => {
     console.log(values);
     let config = {
       method: "post",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
+      // url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
       headers: {
+        Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
+
       data: values,
     };
 
