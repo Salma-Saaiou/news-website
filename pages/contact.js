@@ -11,21 +11,21 @@ export const Contact = () => {
 
   async function onSubmitForm(values) {
     console.log(values);
-    let config = {
+    let config = $http({
       method: "post",
-      url: `https://news-website-9yfufbo5h-salma-saaiou.vercel.app/api/mail`,
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
+    
 
       data: values,
-    };
+    });
 
     try {
       const response = await axios(config);
       if (response.data.status == 200) {
-          reset();
+          
           console.log(response);
       }
       
