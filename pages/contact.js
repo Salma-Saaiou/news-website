@@ -13,7 +13,7 @@ export const Contact = () => {
     console.log(values);
     let config = {
       method: "post",
-      // url: `${process.env.NEXT_PUBLIC_API_URL}/api/mail`,
+      url: `https://news-website-9yfufbo5h-salma-saaiou.vercel.app/api/mail`,
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
