@@ -10,10 +10,6 @@ export default async (req, res) => {
     url:"https://formspree.io/f/xvolbvrl",
     port: 465,
     secure: true,
-    // tls: {
-    //     // must provide server name, otherwise TLS certificate check will fail
-    //     servername: "example.com"
-    // }
     auth: {
       user: "sacrificeadmiin6@gmail.com",
       pass: process.env.pass,

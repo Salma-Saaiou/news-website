@@ -3,38 +3,72 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export const Contact = () => {
+
+  // const [open, setOpen] = useState(false);
+
+  // let btnRef = useRef();
+
+  // const onBtnClick = (e) => {
+  //   if (btnRef.current) {
+  //     btnRef.current.setAttribute("disabled", "disabled");
+  //   } else {
+  //     btnRef.removeAttribute("disabled");
+  //   }
+  // };
+
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  async function onSubmitForm(values) {
+
+  const onSubmitForm = (values, e) => {
+    e.persist();
+    e.preventDefault();
     console.log(values);
-    let config = {
-      method: "post",
-      url:"https://formspree.io/f/xvolbvrl",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-
+    axios({
+      method: "POST",
+      url: "https://formspree.io/f/xbjwapkv",
       data: values,
-    };
+    });
 
-    try {
-      const response = await axios(config);
-      if (response.data.status == 200) {
+    e.target.reset();
+    // setOpen(true);
+    // onBtnClick();
+    router.push('/')
+  };
 
-          console.log(response);
-      }
+  // async function onSubmitForm(values) {
+  //   console.log(values);
+  //   let config = {
+  //     method: "post",
+  //     url:"https://formspree.io/f/xvolbvrl",
+  //     headers: {
+  //       Accept: "application/json, text/plain, */*",
+  //       "Content-Type": "application/json",
+  //     },
 
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  //     data: values,
+      
+  //   };
+
+  //   try {
+  //     const response = await axios(config);
+  //     if (response.data.status == 200 ) {
+  //       router.push('/');
+  //       console.log('hi');
+          
+  //     }
+
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <div>
@@ -97,7 +131,7 @@ export const Contact = () => {
                 Phone
               </label>
               <input
-                type="text"
+                type="phone number"
                 name="phone"
                 className="block w-full shadow py-3 px-4 placeholder-gray-500 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md focus:outline-none focus:ring-2"
                 placeholder="Phone"
@@ -131,34 +165,6 @@ export const Contact = () => {
                 </span>
               )}
             </div>
-            <div className="space-y-[8px]">
-              <label
-                htmlFor="messageSelected"
-                className="text-[#0D0D0D] font-Mulish text-[16px] font-bold ml-2"
-              >
-                Objet de votre message ?
-              </label>
-              <select
-                className="w-full py-3 px-4 focus:outline-0 border border-[#E3E3E3]"
-                defaultValue={"DEFAULT"}
-                name="optionSelected"
-                {...register("optionSelected", {
-                  required: "Required",
-                })}
-              >
-                <option value="DEFAULT" disabled>
-                  Sélectionnez
-                </option>
-                <option value="option1">option1</option>
-                <option value="option2">option2</option>
-                <option value="other">other</option>
-              </select>
-            </div>
-            {errors.optionSelected && (
-              <span className="text-red-400 text-sm py-2">
-                this field is required
-              </span>
-            )}
             <div>
               <button
                 type="submit"
