@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { Toolbar } from "../../components/toolbar";
 import Head from "next/head";
 import Image from "next/image";
+import { NextSeo } from 'next-seo';
+
 
 
 export const Feed = ({ PageNumber, articles }) => {
@@ -14,6 +16,25 @@ export const Feed = ({ PageNumber, articles }) => {
         <meta property="og:title" content="feed" />
       </Head>
       <Toolbar />
+      <NextSeo
+        title="Today's news in Morocco"
+        description="In this page you will find the latest news about Morocco"
+        canonical="https://news-site-nu.vercel.app/feed/1"
+        openGraph={{
+          url: 'https://news-site-nu.vercel.app/feed/1',
+          title: "Today's news",
+          description: 'In this page you will find the latest news about Morocco',
+          // images: [
+          //   {
+          //     url: 'https://www.example.com/images/my-page-image.jpg',
+          //     width: 800,
+          //     height: 600,
+          //     alt: 'My page image',
+          //   },
+          // ],
+          site_name: "Today's news in Morocco",
+        }}
+      />
       <main className="grid place-items-center h-[600px] w-full space-y-12 pt-[100px]">
         {articles.map((article, index) => (
           <div key={index} className="space-y-4 md:w-[700px] w-[300px] ">
